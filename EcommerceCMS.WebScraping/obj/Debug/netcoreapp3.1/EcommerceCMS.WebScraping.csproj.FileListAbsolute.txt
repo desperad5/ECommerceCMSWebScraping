@@ -82,3 +82,4 @@ C:\Users\Emir\Desktop\EcommerceCMS.WebScraping\EcommerceCMS.WebScraping\bin\Debu
 C:\Users\Emir\Desktop\EcommerceCMS.WebScraping\EcommerceCMS.WebScraping\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Emir\Desktop\EcommerceCMS.WebScraping\EcommerceCMS.WebScraping\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Emir\Desktop\EcommerceCMS.WebScraping\EcommerceCMS.WebScraping\obj\Debug\netcoreapp3.1\EcommerceCMS.WebScraping.csproj.CopyComplete
+C:\Users\Emir\Desktop\EcommerceCMS.WebScraping\EcommerceCMS.WebScraping\bin\Debug\netcoreapp3.1\AngleSharp.dll

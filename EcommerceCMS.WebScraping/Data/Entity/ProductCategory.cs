@@ -15,7 +15,7 @@ namespace ECommerceCMS.Data.Entity
         [Required]
         public string CategoryName { get; set; }
         public string ImageUrl { get; set; }
-        public int MenuId { get; set; }
+        public int? MenuId { get; set; }
         public Menu Menu { get; set; }
         public int? ParentCategoryId { get; set; }
         public ProductCategory ParentCategory { get; set; }
