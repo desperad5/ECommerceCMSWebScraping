@@ -20,7 +20,7 @@ namespace ECommerceCMS.Data.Entity
 
         public string Description { get; set; }
         [Required]
-        public int CategoryId { get; set; }
+        public int ProductCategoryId { get; set; }
         public ProductCategory ProductCategory { get; set; }
         [Required]
         public int TenantId { get; set; }
