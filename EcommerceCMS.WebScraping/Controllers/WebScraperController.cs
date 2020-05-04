@@ -34,23 +34,50 @@ namespace EcommerceCMS.WebScraping.Controllers
             var config =Configuration.Default.WithDefaultLoader();
             // Create a new browsing context
             var context = BrowsingContext.New(config);
-            // This is where the HTTP request happens, returns <IDocument> that // we can query later
-            var document = await context.OpenAsync("https://www.boyner.com.tr/erkek-2-c-2");
+        //https://www.boyner.com.tr/kadin-c-1
+        
+            var document = await context.OpenAsync("https://www.boyner.com.tr/kadin-c-1");
             // Log the data to the console
             _logger.LogInformation(document.DocumentElement.OuterHtml);
-            var advertrows = document.Body.QuerySelectorAll("div.sidebar-box ul li a.navLink");
-            foreach (var row in advertrows)
+            var parentCategories= document.Body.QuerySelectorAll("div.sidebar-box h5 a.navLink");
+            foreach(var parentCategory in parentCategories)
             {
-                var text = row.TextContent;
-                _productCategoryRepository.AddWithCommit(new ECommerceCMS.Data.Entity.ProductCategory()
+                //insert into db
+                var childCategories=parentCategory.ParentElement.ParentElement.QuerySelectorAll("ul li a.navLink");
+                var parCategory=_productCategoryRepository.AddWithCommit(new ECommerceCMS.Data.Entity.ProductCategory()
                 {
                     IsDeleted = false,
-                    CategoryName = row.TextContent.Trim(),
-                    ParentCategoryId=2,
-                    IsActive=true,
-                    TenantId=1
-                }) ;
+                    CategoryName = parentCategory.TextContent.Trim(),
+                    ParentCategoryId = 40,
+                    IsActive = true,
+                    TenantId = 1
+                });
+                foreach(var childCategory in childCategories)
+                {
+                    var text = childCategory.TextContent;
+                    _productCategoryRepository.AddWithCommit(new ECommerceCMS.Data.Entity.ProductCategory()
+                    {
+                        IsDeleted = false,
+                        CategoryName = text.Trim(),
+                        ParentCategoryId = parCategory.Id,
+                        IsActive = true,
+                        TenantId = 1
+                    });
+                }
             }
+            var advertrows = document.Body.QuerySelectorAll("div.sidebar-box ul li a.navLink");
+            //foreach (var row in advertrows)
+            //{
+            //    var text = row.TextContent;
+            //    _productCategoryRepository.AddWithCommit(new ECommerceCMS.Data.Entity.ProductCategory()
+            //    {
+            //        IsDeleted = false,
+            //        CategoryName = row.TextContent.Trim(),
+            //        ParentCategoryId=2,
+            //        IsActive=true,
+            //        TenantId=1
+            //    }) ;
+            //}
                 return "Hello";
         }
     }
