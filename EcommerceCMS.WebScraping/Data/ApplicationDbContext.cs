@@ -56,8 +56,12 @@ namespace  ECommerceCMS.Data
                .HasOne(b => b.ParentCategory)
                .WithMany(a => a.ChildCategories)
                .OnDelete(DeleteBehavior.NoAction);
-
+            modelBuilder.Entity<Product>()
+              .HasOne(b => b.Tenant)
+              .WithMany(a => a.Products)
+              .OnDelete(DeleteBehavior.NoAction);
         }
+
     }
 
 }
