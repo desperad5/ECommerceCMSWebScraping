@@ -37,7 +37,7 @@ namespace EcommerceCMS.WebScraping
             services.AddAutoMapper(typeof(Startup));
             services.AddElasticsearch(Configuration);
             services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("SocialAuth")));
+                                                                    options.UseSqlServer(Configuration.GetConnectionString("SocialAuth")));
             services.AddScoped<ITenantRepository, TenantRepository>();
             services.AddScoped<ITenantService, TenantService>();
             services.AddScoped<IUserRepository, UserRepository>();
