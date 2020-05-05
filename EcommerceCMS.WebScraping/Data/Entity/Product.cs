@@ -32,7 +32,7 @@ namespace ECommerceCMS.Data.Entity
         public List<ProductImage> ProductImages { get; set; }
         public int? BrandId { get; set; }
         [Required]
-        public int ProductTypeId { get; set; }
+        public int? ProductTypeId { get; set; }
         public Brand Brand{get;set;}
         public ProductType ProductType { get; set; }
         
@@ -41,7 +41,7 @@ namespace ECommerceCMS.Data.Entity
         public virtual ICollection<ProductComment> ProductComments { get; set; }
         public virtual ICollection<ProductRating> ProductRatings { get; set; }
         public virtual ICollection<ProductBundle> ProductBundles { get; set; }
-        public double Rating { get; set; }
+        public double? Rating { get; set; }
       
         public virtual ICollection<ProductTag> ProductTags { get; set; }
         public virtual ICollection<ProductListing> ProductListings { get; set; }
